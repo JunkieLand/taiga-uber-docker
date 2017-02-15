@@ -179,3 +179,8 @@ sudo rm /etc/nginx/sites-enabled/default
 log "Enable the recently created Taiga site..."
 
 sudo ln -s /etc/nginx/sites-available/taiga /etc/nginx/sites-enabled/taiga
+
+
+log "Update mlocate db"
+
+sudo updatedb

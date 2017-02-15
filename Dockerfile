@@ -7,7 +7,7 @@ RUN useradd --create-home taiga
 RUN \
   apt-get update -qq && \
   apt-get install -y --no-install-recommends apt-utils && \
-  apt-get install -y python3 perl git vim less sudo && \
+  apt-get install -y python3 perl git vim less sudo mlocate && \
   echo "taiga    ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 ENV SCHEME http
