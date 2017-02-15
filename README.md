@@ -13,23 +13,24 @@ It includes Taiga-Events for some live refreshments and interactions.
 
 Though you can find many Docker images on
 the [Docker Hub](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=0&q=taiga&starCount=0),
-I have found out it's really hard to make one work properly.
+I have found out that it's really hard to make one work properly.
 
-First, they are often remaning bugs in the install process, or the
-examples are not up to date, and when the project are not maintained,
+First, there are often remaning bugs in the install process, or the
+examples are not up to date, and when the projects are not maintained,
 it's up to you to debug it.
 
 Then, most of them (if not all) made the choice to split [Taiga-Back](https://github.com/taigaio/taiga-back),
 [Taiga-Front](https://github.com/taigaio/taiga-front), and sometimes
-when it's available, [Taiga-Events](https://github.com/taigaio/taiga-events),
+when they use it, [Taiga-Events](https://github.com/taigaio/taiga-events),
 into separate Docker images. Besides, they are also dependent on other
 Docker images such as PostgreSQL, Redis, RabbitMQ, Celery...
 
-Though this may be a good practice for reusability, it makes it
-complicated to debug, and to handle upgrade. Thus, here is a single
-Docker image containing everything necessary to have a working Taiga.
+Though this may be a good practice for the reusability of Docker images,
+it makes it complicated to debug, and to handle upgrade. Thus, here is
+a single Docker image containing everything necessary to have a working
+Taiga.
 
-I just work.
+It just work.
 
 # How to run it ?
 
@@ -47,7 +48,7 @@ All you need is :
 
 ## The options
 
-Here are the differents settings you can tune though the environment
+Here are the different settings you can tune though environment
 variables (option `-e` as above in the command :
 
  * `-e TAIGA_HOSTNAME` : defaults to `localhost`.
@@ -62,4 +63,4 @@ To build the image, run the following command in this very directoy :
 
     docker build --tag taiga .
 
-You can customize the build by changing variables in scripts/env.sh
+You can customize the build by changing variables in `scripts/env.sh`
