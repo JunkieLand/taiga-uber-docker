@@ -20,21 +20,22 @@ WORKDIR /home/taiga
 
 ENV DEBIAN_FRONTEND noninteractive
 
-COPY scripts/env.sh /tmp/
+COPY scripts/envTaiga.sh /usr/bin/
 COPY scripts/install.sh /tmp/
 COPY scripts/startTaiga.sh /usr/bin/
 
 COPY conf/taiga_back_local.py.sh /tmp/
 COPY conf/taiga_front_conf.json.sh /tmp/
 COPY conf/taiga_events_config.json.sh /tmp/
+COPY conf/rabbitmq-env.conf.sh /tmp/
 COPY conf/circus_conf_taiga.ini.sh /tmp/
 COPY conf/circus_conf_taiga-events.ini.sh /tmp/
 COPY conf/nginx_taiga_conf.sh /tmp/
 
 RUN /tmp/install.sh
 
-VOLUME ["/home/taiga/logs"]
+VOLUME ["/home/taiga/logs", "/home/taiga/taiga-back/static", "/home/taiga/taiga-back/media"]
 
 CMD /usr/bin/startTaiga.sh
 
-EXPOSE 80 8000
+EXPOSE 80

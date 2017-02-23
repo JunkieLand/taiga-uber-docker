@@ -63,4 +63,4 @@ To build the image, run the following command in this very directoy :
 
     docker build --tag taiga .
 
-You can customize the build by changing variables in `scripts/env.sh`
+You can customize the build by changing variables in `scripts/envTaiga.sh`

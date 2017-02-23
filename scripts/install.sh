@@ -13,7 +13,7 @@ logTitle () {
   echo ""
 }
 
-source /tmp/env.sh
+source /usr/bin/envTaiga.sh
 
 
 
@@ -48,7 +48,6 @@ log "Setting up Python environment"
 
 sudo apt-get install -y python3 python3-pip python-dev python3-dev python-pip virtualenvwrapper
 sudo apt-get install -y libxml2-dev libxslt-dev
-
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 
@@ -60,7 +59,6 @@ log "Cloning Taiga Back..."
 
 cd $TAIGA_HOME
 git clone https://github.com/taigaio/taiga-back.git taiga-back
-
 cd taiga-back
 git checkout $TAIGA_BACK_COMMIT
 
@@ -71,7 +69,6 @@ log "Copy local.py..."
 log "Installing Taiga Back Python dependencies..."
 
 mkvirtualenv -p /usr/bin/python3.5 taiga
-
 pip install -r requirements.txt
 
 log "Populate the database with initial basic data..."
@@ -94,7 +91,6 @@ python manage.py collectstatic --noinput
 
 logTitle "TAIGA FRONT"
 
-
 log "Cloning Taiga Front..."
 
 cd $TAIGA_HOME
@@ -103,6 +99,7 @@ cd taiga-front-dist
 git checkout stable
 
 log "Copy Taiga Front conf file..."
+
 /tmp/taiga_front_conf.json.sh
 
 
@@ -118,12 +115,6 @@ sudo apt-get install -y rabbitmq-server
 log "Starting RabbitMQ server..."
 
 sudo service rabbitmq-server start
-
-log "Creating a taiga user and virtualhost for rabbitmq..."
-
-sudo rabbitmqctl add_user taiga $RABBITMQ_TAIGA_PWD
-sudo rabbitmqctl add_vhost taiga
-sudo rabbitmqctl set_permissions -p taiga taiga ".*" ".*" ".*"
 
 log "Cloning Taiga Events..."
 

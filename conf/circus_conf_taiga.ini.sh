@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /tmp/env.sh
+source /usr/bin/envTaiga.sh
 
 # Environment variables
 TAIGA_USER=${TAIGA_USER:-root}

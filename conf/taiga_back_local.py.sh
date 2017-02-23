@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /tmp/env.sh
+source /usr/bin/envTaiga.sh
 
 # Environment variables
 TAIGA_USER=${TAIGA_USER:-root}
@@ -9,11 +9,13 @@ LOG_DIR=${LOG_DIR:-/root/logs}
 TAIGA_SECRET=${TAIGA_SECRET:-theveryultratopsecretkey}
 SCHEME=${SCHEME:-http}
 TAIGA_HOSTNAME=${TAIGA_HOSTNAME:-localhost}
+RABBITMQ_PORT=${RABBITMQ_PORT:-5672}
 RABBITMQ_TAIGA_PWD=${RABBITMQ_TAIGA_PWD:-ratuiersauinrst}
 TAIGA_BACK_API_PORT=${TAIGA_BACK_API_PORT:-8000}
 SCHEME=${SCHEME:-http}
 DEBUG=${DEBUG:-True}
 TAIGA_DB_PWD=${TAIGA_DB_PWD:-bbbbbbbb}
+PUBLIC_REGISTER_ENABLED=${PUBLIC_REGISTER_ENABLED:-True}
 
 # Local variables
 STATIC_URL=$SCHEME://$TAIGA_HOSTNAME/static/
@@ -128,7 +130,7 @@ SECRET_KEY = "$TAIGA_SECRET"
 #########################################
 
 EVENTS_PUSH_BACKEND = "taiga.events.backends.rabbitmq.EventsPushBackend"
-EVENTS_PUSH_BACKEND_OPTIONS = {"url": "amqp://taiga:$RABBITMQ_TAIGA_PWD@localhost:5672/taiga"}
+EVENTS_PUSH_BACKEND_OPTIONS = {"url": "amqp://taiga:$RABBITMQ_TAIGA_PWD@localhost:$RABBITMQ_PORT/taiga"}
 
 #########################################
 ## MAIL SYSTEM SETTINGS
@@ -158,7 +160,7 @@ EVENTS_PUSH_BACKEND_OPTIONS = {"url": "amqp://taiga:$RABBITMQ_TAIGA_PWD@localhos
 ## REGISTRATION
 #########################################
 
-PUBLIC_REGISTER_ENABLED = True
+PUBLIC_REGISTER_ENABLED = $PUBLIC_REGISTER_ENABLED
 
 # LIMIT ALLOWED DOMAINS FOR REGISTER AND INVITE
 # None or [] values in USER_EMAIL_ALLOWED_DOMAINS means allow any domain
