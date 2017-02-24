@@ -18,7 +18,7 @@ cat >> $FILE << EOL
 
 [watcher:taiga-events]
 working_dir = $TAIGA_HOME/taiga-events
-cmd = /usr/local/bin/coffee
+cmd = /usr/bin/coffee
 args = index.coffee
 uid = $TAIGA_USER
 numprocesses = 1

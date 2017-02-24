@@ -124,7 +124,8 @@ cd taiga-events
 
 log "Installing all the javascript dependencies needed..."
 
-sudo apt-get install -y nodejs nodejs-legacy npm
+# sudo apt-get install -y nodejs nodejs-legacy npm
+sudo apt-get install -y nodejs
 npm install
 sudo npm install -g coffee-script
 

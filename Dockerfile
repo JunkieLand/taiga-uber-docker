@@ -7,7 +7,8 @@ RUN useradd --create-home taiga
 RUN \
   apt-get update -qq && \
   apt-get install -y --no-install-recommends apt-utils && \
-  apt-get install -y python3 perl git vim less sudo mlocate && \
+  apt-get install -y python3 perl git vim less sudo mlocate curl && \
+  curl -sL https://deb.nodesource.com/setup_6.x > /tmp/node.sh && chmod +x /tmp/node.sh && /tmp/node.sh && \
   echo "taiga    ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 ENV SCHEME http
@@ -27,7 +28,6 @@ COPY scripts/startTaiga.sh /usr/bin/
 COPY conf/taiga_back_local.py.sh /tmp/
 COPY conf/taiga_front_conf.json.sh /tmp/
 COPY conf/taiga_events_config.json.sh /tmp/
-COPY conf/rabbitmq-env.conf.sh /tmp/
 COPY conf/circus_conf_taiga.ini.sh /tmp/
 COPY conf/circus_conf_taiga-events.ini.sh /tmp/
 COPY conf/nginx_taiga_conf.sh /tmp/
