@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Public environment
-SCHEME=${SCHEME:-http}
-TAIGA_HOSTNAME=${TAIGA_HOSTNAME:-localhost}
+TAIGA_PORT=${TAIGA_PORT:-80}
 DEBUG=${DEBUG:-True}
 PUBLIC_REGISTER_ENABLED=${PUBLIC_REGISTER_ENABLED:-True}
 

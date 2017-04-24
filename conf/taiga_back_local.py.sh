@@ -7,18 +7,15 @@ TAIGA_USER=${TAIGA_USER:-root}
 TAIGA_HOME=${TAIGA_HOME:-/root}
 LOG_DIR=${LOG_DIR:-/root/logs}
 TAIGA_SECRET=${TAIGA_SECRET:-theveryultratopsecretkey}
-SCHEME=${SCHEME:-http}
-TAIGA_HOSTNAME=${TAIGA_HOSTNAME:-localhost}
 RABBITMQ_PORT=${RABBITMQ_PORT:-5672}
 RABBITMQ_TAIGA_PWD=${RABBITMQ_TAIGA_PWD:-ratuiersauinrst}
 TAIGA_BACK_API_PORT=${TAIGA_BACK_API_PORT:-8000}
-SCHEME=${SCHEME:-http}
 DEBUG=${DEBUG:-True}
 TAIGA_DB_PWD=${TAIGA_DB_PWD:-bbbbbbbb}
 PUBLIC_REGISTER_ENABLED=${PUBLIC_REGISTER_ENABLED:-True}
 
 # Local variables
-STATIC_URL=$SCHEME://$TAIGA_HOSTNAME/static/
+STATIC_URL=http://$HOSTNAME:$TAIGA_PORT/static/
 
 # Generate conf file
 FILE=$TAIGA_HOME/taiga-back/settings/local.py
@@ -94,18 +91,18 @@ SITES = {
        "name": "api"
     },
     "front": {
-       "scheme": "$SCHEME",
-       "domain": "$TAIGA_HOSTNAME",
+       "scheme": "http",
+       "domain": "$HOSTNAME",
        "name": "front"
     },
 }
 
 #SITE_ID = "api"
 
-HOST="$SCHEME://$TAIGA_HOSTNAME"
+HOST="http://$HOSTNAME:$TAIGA_PORT"
 
 MEDIA_ROOT = '$TAIGA_HOME/taiga-back/media'
-MEDIA_URL = "$SCHEME://$TAIGA_HOSTNAME/media/"
+MEDIA_URL = "http://$HOSTNAME:$TAIGA_PORT/media/"
 
 STATIC_ROOT = '$TAIGA_HOME/taiga-back/static'
 STATIC_URL = "$STATIC_URL"

@@ -11,8 +11,7 @@ RUN \
   curl -sL https://deb.nodesource.com/setup_6.x > /tmp/node.sh && chmod +x /tmp/node.sh && /tmp/node.sh && \
   echo "taiga    ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-ENV SCHEME http
-ENV TAIGA_HOSTNAME localhost
+ENV TAIGA_PORT 80
 ENV DEBUG True
 ENV PUBLIC_REGISTER_ENABLED True
 
@@ -34,7 +33,7 @@ COPY conf/nginx_taiga_conf.sh /tmp/
 
 RUN /tmp/install.sh
 
-VOLUME ["/home/taiga/logs", "/home/taiga/taiga-back/static", "/home/taiga/taiga-back/media"]
+VOLUME ["/home/taiga/logs", "/home/taiga/taiga-back/static", "/home/taiga/taiga-back/media", "/var/lib/postgresql/9.5/main"]
 
 CMD /usr/bin/startTaiga.sh
 
