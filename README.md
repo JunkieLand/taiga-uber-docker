@@ -71,6 +71,18 @@ All data regarding the life of the Taiga instance can be persisted outside the c
  * `-v /path/to/your/taiga-media:/home/taiga-back/media`
  * `-v /path/to/your/taiga-db-data:/var/lib/postgresql/9.5/main`
 
+## The emails
+
+To allow Taiga to send emails, add the following options to the `docker run` command :
+
+ * `-e EMAIL_ENABLED` : defaults to `False`. Activates Taiga emails. Other possible value is `True`.
+ * `-e EMAIL_DEFAULT_FROM` : defaults to `noreply@example.com`. The sender email address.
+ * `-e EMAIL_USE_TLS` : default to `False`. Activates encryption for emails. Other possible value is `True`.
+ * `-e EMAIL_HOST` : defaults to `localhost`. The SMTP host.
+ * `-e EMAIL_PORT` : defaults to `25`. The SMTP port.
+ * `-e EMAIL_HOST_USER`. The user to use with the SMTP server if you use TLS.
+ * `-e EMAIL_HOST_PASSWORD`. The password to use with the SMTP server if you use TLS.
+
 # How to build the image ?
 
 To build the image, run the following command in this very directoy :

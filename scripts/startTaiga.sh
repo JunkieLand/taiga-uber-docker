@@ -11,6 +11,7 @@ source /usr/bin/envTaiga.sh
 
 log "Initializing database..."
 
+sudo chown postgres /var/lib/postgresql/9.5/main/
 sudo -u postgres /usr/lib/postgresql/9.5/bin/initdb -D /var/lib/postgresql/9.5/main/
 
 sudo service postgresql start

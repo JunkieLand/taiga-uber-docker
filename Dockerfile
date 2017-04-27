@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN useradd --create-home taiga
+RUN useradd --create-home --uid 1042 taiga
 
 RUN \
   apt-get update -qq && \
@@ -12,8 +12,16 @@ RUN \
   echo "taiga    ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 ENV TAIGA_PORT 80
-ENV DEBUG True
+ENV DEBUG False
 ENV PUBLIC_REGISTER_ENABLED True
+ENV EMAIL_ENABLED False
+ENV EMAIL_DEFAULT_FROM "noreply@example.com"
+ENV EMAIL_USE_TLS False
+ENV EMAIL_HOST "localhost"
+ENV EMAIL_PORT 25
+ENV EMAIL_HOST_USER "user"
+ENV EMAIL_HOST_PASSWORD "password"
+
 
 USER taiga
 WORKDIR /home/taiga
