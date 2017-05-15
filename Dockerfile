@@ -6,6 +6,9 @@ RUN useradd --create-home --uid 1042 taiga
 
 RUN \
   apt-get update -qq && \
+  apt-get install locales && \
+  locale-gen fr_FR.UTF-8 en_GB.UTF-8 && \
+  update-locale LANG=en_GB.UTF-8 LC_MESSAGES=POSIX && \
   apt-get install -y --no-install-recommends apt-utils && \
   apt-get install -y python3 perl git vim less sudo mlocate curl && \
   curl -sL https://deb.nodesource.com/setup_6.x > /tmp/node.sh && chmod +x /tmp/node.sh && /tmp/node.sh && \
@@ -31,9 +34,9 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY scripts/envTaiga.sh /usr/bin/
 COPY scripts/install.sh /tmp/
 COPY scripts/startTaiga.sh /usr/bin/
+COPY conf/taiga_back_local.py.sh /usr/bin/
+COPY conf/taiga_front_conf.json.sh /usr/bin/
 
-COPY conf/taiga_back_local.py.sh /tmp/
-COPY conf/taiga_front_conf.json.sh /tmp/
 COPY conf/taiga_events_config.json.sh /tmp/
 COPY conf/circus_conf_taiga.ini.sh /tmp/
 COPY conf/circus_conf_taiga-events.ini.sh /tmp/

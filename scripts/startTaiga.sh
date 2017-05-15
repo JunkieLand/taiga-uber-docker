@@ -42,11 +42,11 @@ python manage.py collectstatic --noinput
 
 log "Copy Taiga Back conf file local.py..."
 
-/tmp/taiga_back_local.py.sh
+/usr/bin/taiga_back_local.py.sh
 
 log "Copy Taiga Front conf file..."
 
-/tmp/taiga_front_conf.json.sh
+/usr/bin/taiga_front_conf.json.sh
 
 log "Starting RabbitMQ..."
 
